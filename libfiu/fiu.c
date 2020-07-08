@@ -326,7 +326,7 @@ int fiu_fail(const char *name)
 				goto exit_fail;
 			break;
 		case PF_EXTERNAL:
-			if (pf->minfo.external_cb(pf->name,
+			if (pf->minfo.external_cb(name,
 					&(pf->failnum),
 					&(pf->failinfo),
 					&(pf->flags)))

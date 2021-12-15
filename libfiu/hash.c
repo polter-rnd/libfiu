@@ -294,11 +294,13 @@ bool hash_del(struct hash *h, const char *key)
 		if (entry->in_use == NEVER) {
 			/* We got to a never used key, not found. */
 			return false;
-		} else if (entry->in_use == IN_USE &&
-				strcmp(key, entry->key) == 0) {
-			/* The key matches, remove it. */
-			found = true;
-			break;
+		} else if (entry->key) {
+				if (entry->in_use == IN_USE &&
+					strcmp(key, entry->key) == 0) {
+					/* The key matches, remove it. */
+					found = true;
+					break;
+				}
 		}
 
 		/* The key doesn't match this entry, continue with linear probing. */

@@ -248,11 +248,11 @@ int fiu_init(unsigned int flags)
 
 	enabled_fails = wtable_create((void (*)(void *)) pf_free);
 
-	if (pthread_atfork(NULL, NULL, atfork_child) != 0) {
+	/*if (pthread_atfork(NULL, NULL, atfork_child) != 0) {
 		ef_wunlock();
 		rec_count--;
 		return -1;
-	}
+	}*/
 
 	static_seed_from_env = getenv("FIU_PRNG_SEED");
 	if (static_seed_from_env != NULL) {
